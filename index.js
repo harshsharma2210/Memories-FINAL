@@ -4,6 +4,8 @@ import mongoose from "mongoose";
 import cors from "cors";
 
 import postRoutes from "./routes/posts.js";
+import { fileURLToPath } from "url";
+
 import userRouter from "./routes/user.js";
 
 const app = express();
@@ -16,7 +18,10 @@ app.use("/posts", postRoutes);
 app.use("/user", userRouter);
 
 // ... other imports
-const path = require("path");
+import path from "path";
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = path.dirname(__filename);
 
 // ... other app.use middleware
 app.use(express.static(path.join(__dirname, "client", "build")));
