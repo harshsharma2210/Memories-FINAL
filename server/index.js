@@ -1,34 +1,18 @@
 import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
+const app = express();
 import cors from "cors";
 
 import postRoutes from "./routes/posts.js";
 import userRouter from "./routes/user.js";
-
-const app = express();
+app.use(cors());
 
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
-app.use(cors());
 
 app.use("/posts", postRoutes);
 app.use("/user", userRouter);
-
-// ... other imports
-import path from "path";
-import { fileURLToPath } from "url";
-const __filename = fileURLToPath(import.meta.url);
-
-const __dirname = path.dirname(__filename);
-// ... other app.use middleware
-app.use(express.static(path.join(__dirname, "client", "build")));
-
-// ...
-// Right before your app.listen(), add this:
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
 
 const CONNECTION_URL =
   "mongodb+srv://admin:22102000@cluster0.vdlbz.mongodb.net/?retryWrites=true&w=majority";
