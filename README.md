@@ -3,7 +3,7 @@
 ![image](https://user-images.githubusercontent.com/54092402/183420639-7099d630-1596-4505-9db9-9a5fde2a8df5.png)
 
 
-> Track and group your expenses for better management of your finances. 
+> Social media app that allows users to post interesting events that happened in their lives.
 
 Created with React.
 
